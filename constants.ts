@@ -20,11 +20,7 @@ export const STUDENT_DUCKS = [
   { duckName: "Besourinha", owner: "Francisco Davi do Nascimento" },
   { duckName: "Zeca Subtantivo ", owner: "Lívia Mota" },
   { duckName: "Conceição", owner: "Maria Lauriene Almeida Nascimento" },
-<<<<<<< HEAD
   { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes" }
-=======
-  { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes" },
->>>>>>> origin/main
 ];
 
 // --- PARK LAYOUT CONFIGURATION ---
