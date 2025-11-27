@@ -21,6 +21,7 @@ export const STUDENT_DUCKS = [
   { duckName: "Besourinha", owner: "Francisco Davi do Nascimento" },
   { duckName: "Zeca Subtantivo ", owner: "Lívia Mota" },
   { duckName: "Conceição", owner: "Maria Lauriene Almeida Nascimento" },
+  { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes" },
 ];
 
 export const PROGRAMMER_QUOTES = [
