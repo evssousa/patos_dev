@@ -1,4 +1,3 @@
-
 // --- DATA: DUCKS & OWNERS ---
 // Adicione ou remova itens deste array para controlar a quantidade de patos na tela.
 export const STUDENT_DUCKS = [
