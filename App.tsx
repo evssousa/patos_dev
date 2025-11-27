@@ -1,6 +1,6 @@
-
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Duck } from './components/Duck';
+import { TechEcosystem, TREE_SVG } from './components/TechEcosystem';
 import { DuckAction, DuckState } from './types';
 import { 
   STUDENT_DUCKS,
@@ -12,7 +12,8 @@ import {
   SPEECH_DURATION_TICKS,
   WALK_SPEED, 
   RUN_SPEED, 
-  FLY_SPEED
+  FLY_SPEED,
+  PARK_LAYOUT
 } from './constants';
 
 const App: React.FC = () => {
@@ -55,7 +56,8 @@ const App: React.FC = () => {
             y: e.clientY - 10,
             vx: 0,
             vy: 0,
-            action: DuckAction.DRAG
+            action: DuckAction.DRAG,
+            zIndex: 99999 // Always on top when dragging
           };
         }
         return d;
@@ -73,8 +75,8 @@ const App: React.FC = () => {
             action: DuckAction.FLY, // They fly for a bit after being dropped
             vx: (Math.random() - 0.5) * 10,
             vy: -5, // Pop up a bit
-            speech: "Me solta!", // Translated
-            speechTimer: SPEECH_DURATION_TICKS // 1 minute
+            speech: "Me solta!", 
+            speechTimer: SPEECH_DURATION_TICKS
           };
         }
         return d;
@@ -102,7 +104,7 @@ const App: React.FC = () => {
         return {
           ...d,
           speech: DRAG_QUOTES[Math.floor(Math.random() * DRAG_QUOTES.length)],
-          speechTimer: SPEECH_DURATION_TICKS, // 1 minute
+          speechTimer: SPEECH_DURATION_TICKS,
           action: DuckAction.DRAG
         };
       }
@@ -115,6 +117,7 @@ const App: React.FC = () => {
     const interval = setInterval(() => {
       const { innerWidth, innerHeight } = window;
       const PADDING = 30;
+      const POND_Y_START = innerHeight * 0.8; // 80% down is water
       tickRef.current += 1;
 
       setDucks(currentDucks => {
@@ -135,10 +138,9 @@ const App: React.FC = () => {
           const roll = Math.random();
           
           // Randomly think about programming (If not already speaking)
-          // Uses !speech to prevent overwriting existing thoughts
-          if (!speech && roll < 0.001) { // Lower chance due to high duck count
+          if (!speech && roll < 0.001) { 
              speech = PROGRAMMER_QUOTES[Math.floor(Math.random() * PROGRAMMER_QUOTES.length)];
-             speechTimer = SPEECH_DURATION_TICKS; // 1 minute
+             speechTimer = SPEECH_DURATION_TICKS;
           }
 
           // Mouse Aggression/Reaction
@@ -149,21 +151,18 @@ const App: React.FC = () => {
           if (distMouse < 100 && action !== DuckAction.SLEEP && action !== DuckAction.FLY) {
              // Roll for reaction
              if (roll < 0.05) {
-               // Attack mouse
-               // Only set speech if not already speaking to avoid flickering/resetting timer
                if (!speech) {
                    speech = ATTACK_QUOTES[Math.floor(Math.random() * ATTACK_QUOTES.length)];
-                   speechTimer = SPEECH_DURATION_TICKS; // 1 minute
+                   speechTimer = SPEECH_DURATION_TICKS;
                }
                action = DuckAction.ATTACK;
                direction = dxMouse > 0 ? 1 : -1;
-               vx = (dxMouse / distMouse) * RUN_SPEED; // Chase mouse
+               vx = (dxMouse / distMouse) * RUN_SPEED;
                vy = (dyMouse / distMouse) * RUN_SPEED;
              } else if (roll > 0.95) {
-               // Run away from mouse
                if (!speech) {
                    speech = RUN_QUOTES[Math.floor(Math.random() * RUN_QUOTES.length)];
-                   speechTimer = SPEECH_DURATION_TICKS; // 1 minute
+                   speechTimer = SPEECH_DURATION_TICKS;
                }
                action = DuckAction.RUN;
                vx = -(dxMouse / distMouse) * RUN_SPEED;
@@ -173,13 +172,13 @@ const App: React.FC = () => {
           }
 
           // Regular State Transitions
-          // Optimized for many ducks: don't change state too often
           if (tickRef.current % 30 === 0) {
+            // General state machine
             if (action === DuckAction.WALK && roll < 0.1) action = DuckAction.IDLE;
             else if (action === DuckAction.IDLE && roll < 0.1) action = DuckAction.SLEEP;
-            else if (action === DuckAction.SLEEP && roll < 0.05) action = DuckAction.IDLE; // Wake up
-            else if (action === DuckAction.FLY && roll < 0.05) action = DuckAction.WALK; // Land
-            else if (action !== DuckAction.FLY && action !== DuckAction.SLEEP && roll < 0.01) action = DuckAction.FLY; // Take off
+            else if (action === DuckAction.SLEEP && roll < 0.05) action = DuckAction.IDLE;
+            else if (action === DuckAction.FLY && roll < 0.05) action = DuckAction.WALK;
+            else if (action !== DuckAction.FLY && action !== DuckAction.SLEEP && action !== DuckAction.SWIM && roll < 0.01) action = DuckAction.FLY;
             
             // Random movement changes
             if (action === DuckAction.WALK || action === DuckAction.SWIM) {
@@ -210,14 +209,16 @@ const App: React.FC = () => {
           if (y > innerHeight - PADDING) { y = innerHeight - PADDING; vy *= -1; }
           if (y < 0) { y = 0; vy *= -1; }
 
-          // 4. SPECIAL CONTEXTS
-          // Bottom of screen = "Water" area logic
-          if (y > innerHeight * 0.8 && action !== DuckAction.FLY) {
-            if (action !== DuckAction.SWIM) {
-              action = DuckAction.SWIM;
-            }
-          } else if (action === DuckAction.SWIM && y <= innerHeight * 0.8) {
-            action = DuckAction.WALK;
+          // 4. ENVIRONMENT INTERACTIONS (The Park Rules)
+          
+          // A. Pond Logic (Strict)
+          // If in the bottom 20% of screen, MUST be swimming.
+          // This overrides walking/running/attacking.
+          if (y > POND_Y_START && action !== DuckAction.FLY) {
+             action = DuckAction.SWIM;
+          } else if (action === DuckAction.SWIM && y <= POND_Y_START) {
+             // If leaving water, stop swimming
+             action = DuckAction.WALK;
           }
 
           return {
@@ -230,7 +231,10 @@ const App: React.FC = () => {
             action,
             speech,
             speechTimer,
-            zIndex: action === DuckAction.FLY ? 9999 : Math.floor(y)
+            // Z-Index Logic: 
+            // Fly = Top.
+            // Walk/Idle = Based on Y.
+            zIndex: action === DuckAction.FLY ? 99999 : Math.floor(y)
           };
         });
       });
@@ -240,25 +244,17 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-white overflow-hidden font-sans select-none cursor-default">
+    <div className="relative w-full h-screen bg-gray-50 overflow-hidden font-sans select-none cursor-default">
       
-      {/* Background Grid for Retro Feel */}
-      <div className="absolute inset-0 pointer-events-none" 
-           style={{ 
-             backgroundImage: 'radial-gradient(#e5e7eb 1px, transparent 1px)', 
-             backgroundSize: '20px 20px' 
-           }}>
-      </div>
-
-      {/* Water Area */}
-      <div className="absolute bottom-0 w-full h-[20%] bg-blue-50 border-t-2 border-blue-100 pointer-events-none"></div>
+      {/* Background Layer (Grass) */}
+      <TechEcosystem />
 
       {/* Header */}
       <div className="absolute top-6 left-6 z-[100] pointer-events-none opacity-50 hover:opacity-100 transition-opacity">
-        <h1 className="text-2xl font-black text-gray-800 tracking-tighter" style={{ fontFamily: 'monospace' }}>
+        <h1 className="text-2xl font-black text-gray-800 tracking-tighter bg-white/50 px-2 rounded backdrop-blur-sm" style={{ fontFamily: 'monospace' }}>
           &lt;PATOS_DEV /&gt;
         </h1>
-        <p className="text-xs text-gray-500 font-mono">
+        <p className="text-xs text-gray-600 font-mono bg-white/50 px-2 mt-1 rounded inline-block">
           Arraste. Irrite. Observe. {ducks.length} Patos.
         </p>
       </div>
@@ -271,6 +267,34 @@ const App: React.FC = () => {
           onMouseDown={startDrag} 
         />
       ))}
+
+      {/* Foreground Objects: Trees */}
+      {/* Rendered here to participate in visual Z-sorting logic implicitly or explicitly if needed.
+          Since Ducks use zIndex = Math.floor(y), we set Tree zIndex based on their Y base. 
+      */}
+      {PARK_LAYOUT.TREES.map((tree, i) => {
+        const top = (tree.y / 100) * window.innerHeight;
+        const left = (tree.x / 100) * window.innerWidth;
+        // Tree height is approx 80px. The "base" is at top + 80.
+        // We set zIndex to base Y.
+        const baseZ = Math.floor(top + 70); 
+
+        return (
+          <div 
+            key={`tree-${i}`} 
+            className="absolute pointer-events-none"
+            style={{ 
+              left, 
+              top, 
+              transform: `scale(${tree.scale})`,
+              zIndex: baseZ
+            }}
+          >
+            {TREE_SVG}
+          </div>
+        );
+      })}
+
     </div>
   );
 };

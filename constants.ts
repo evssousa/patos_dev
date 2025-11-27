@@ -1,4 +1,3 @@
-
 // --- DATA: DUCKS & OWNERS ---
 // Adicione ou remova itens deste array para controlar a quantidade de patos na tela.
 export const STUDENT_DUCKS = [
@@ -19,8 +18,24 @@ export const STUDENT_DUCKS = [
   { duckName: "Piroquinha", owner: "Rosiele Ferreira de Sousa" },
   { duckName: "Duckzilla", owner: "Gustavo Silva" },
   { duckName: "Besourinha", owner: "Francisco Davi do Nascimento" },
-  { duckName: "Besourinha", owner: "Francisco Davi do Nascimento" }
+  { duckName: "Zeca Subtantivo ", owner: "Lívia Mota" },
+  { duckName: "Conceição", owner: "Maria Lauriene Almeida Nascimento" },
+  { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes" }
 ];
+
+// --- PARK LAYOUT CONFIGURATION ---
+// Defines locations for environmental objects
+// Coordinates are roughly percentages (0-100) or pixels if specified, but mapping happens in App/Component
+export const PARK_LAYOUT = {
+  TREES: [
+    { x: 5, y: 10, scale: 1.0 },
+    { x: 15, y: 15, scale: 1.2 },
+    { x: 90, y: 5, scale: 0.9 },
+    { x: 75, y: 20, scale: 1.0 },
+    { x: 85, y: 45, scale: 1.1 }, // Middle right
+    { x: 10, y: 50, scale: 1.0 }, // Middle left
+  ]
+};
 
 export const PROGRAMMER_QUOTES = [
   // --- INFORMÁTICA BÁSICA ---
@@ -262,7 +277,7 @@ export const RUN_QUOTES = [
 ];
 
 export const INTERVAL_MS = 30;
-export const SPEECH_DURATION_TICKS = 2000; // ~60 seconds (2000 * 30ms = 60000ms)
+export const SPEECH_DURATION_TICKS = 2000; // ~60 seconds
 export const WALK_SPEED = 0.1; 
 export const RUN_SPEED = 0.4;  
 export const FLY_SPEED = 0.6;  
