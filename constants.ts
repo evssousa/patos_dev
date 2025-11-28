@@ -2,6 +2,18 @@
 // Adiciona ou remove itens do array para controlar a quantidade de patos na tela.
 // { duckName: "nomePato", owner: "donoPato" },
 export const STUDENT_DUCKS = [
+  // 1º ANO DS
+  { duckName: "Pato do Arrebatamento", owner: "Rebeka 1ºDS" },
+  { duckName: "Tchurumelo", owner: "Aristides Neto 1ºDS" },
+  { duckName: "Fergus", owner: "Isabelle 1ºDS" },
+  { duckName: "Pêniswise", owner: "Jose Henrique Lima Duarte 1ºDS" },
+  { duckName: "Bela Sulino", owner: "Sara Sulino 1ºDS" },
+  { duckName: "Star ", owner: "Wanessa Pereira da Silva 1ºDS" },
+  { duckName: "Um Cafetão Chamado Maciota", owner: "Mario 1ºDS" },
+  { duckName: "Senhor Quacks", owner: "Pedro Henrique Inacio de Castro 1ºDS" },
+
+  // 2º ANO DS
+  { duckName: "Desgraçado Jr.", owner: "José Enzo Marinho Ramos 2ºDS" },
   { duckName: "Arrascaeta JR", owner: "Antonio Helder 2ºDS" },
   { duckName: "Bia", owner: "Francisco Tiago 2ºDS" },
   { duckName: "Bob Souza Gurgel", owner: "Anna Beatryz Gomes Gurgel 2ºDS" },
@@ -22,14 +34,13 @@ export const STUDENT_DUCKS = [
   { duckName: "Zeca Subtantivo ", owner: "Lívia Mota 2ºDS" },
   { duckName: "Conceição", owner: "Maria Lauriene Almeida Nascimento 2ºDS" },
   { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes 2ºDS" },
-  { duckName: "Pato do Arrebatamento", owner: "Rebeka 1ºDS" },
-  { duckName: "Tchurumelo", owner: "Aristides Neto 1ºDS" },
-  { duckName: "Fergus", owner: "Isabelle 1ºDS" },
-  { duckName: "Pêniswise", owner: "Jose Henrique Lima Duarte 1ºDS" },
-  { duckName: "Bela Sulino", owner: "Sara Sulino 1ºDS" },
-  { duckName: "Star ", owner: "Wanessa Pereira da Silva 1ºDS" },
-  { duckName: "Um Cafetão Chamado Maciota", owner: "Mario 1ºDS" },
-  { duckName: "Senhor Quacks", owner: "Pedro Henrique Inacio de Castro 1ºDS" },
+
+  // 3º ANO DS
+
+  // 1º ANO REDES
+
+  // 2º ANO REDES
+
 ];
 
 // --- PARK LAYOUT CONFIGURATION ---
