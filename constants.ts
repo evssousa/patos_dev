@@ -11,6 +11,16 @@ export const STUDENT_DUCKS = [
   { duckName: "Star ", owner: "Wanessa Pereira da Silva 1ºDS" },
   { duckName: "Um Cafetão Chamado Maciota", owner: "Mario 1ºDS" },
   { duckName: "Senhor Quacks", owner: "Pedro Henrique Inacio de Castro 1ºDS" },
+  { duckName: "Sapatonis", owner: "Kyara 1ºDS" },
+  { duckName: "Chinesa", owner: "Kauã 1ºDS" },
+  { duckName: "Tetris", owner: "Luis Fernando Braga dos Santos 1ºDS" },
+  { duckName: "Xibatinha", owner: "João Mateus 1ºDS" },
+  { duckName: "Orion", owner: "Davyson Levi dos Santos Cordeiro 1ºDS" },
+  { duckName: "José Ceverino Antônio de Albuquerque", owner: "Thaires Sousa Rodrigues 1ºDS" },
+  { duckName: "Godofredo", owner: "Andre 1ºDS" },
+  { duckName: "Cleitin", owner: "João Emanoel Alves da Silva 1ºDS" },
+  { duckName: "Fodêncio", owner: "Caio Victor Barros Uchoa 1ºDS" },
+  { duckName: "Judite", owner: "Lariany Duarte 1ºDS" },
 
   // 2º ANO DS
   { duckName: "Desgraçado Jr.", owner: "José Enzo Marinho Ramos 2ºDS" },
@@ -34,8 +44,14 @@ export const STUDENT_DUCKS = [
   { duckName: "Zeca Subtantivo ", owner: "Lívia Mota 2ºDS" },
   { duckName: "Conceição", owner: "Maria Lauriene Almeida Nascimento 2ºDS" },
   { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes 2ºDS" },
+  { duckName: "Zeca Doca", owner: "Gustavo Teixeira 2ºDS" },
+  { duckName: "Heldinho", owner: "João Guilherme Lins Almeida" },
+  { duckName: "Marío Claro", owner: "Vivian Maria Vaz" },
 
   // 3º ANO DS
+  { duckName: "Kyle Crane", owner: "Jovêncio 3ºDS" },
+  { duckName: "Petrucio", owner: "Alan Dyeison 3ºDS" },
+  { duckName: "Sabuguinho", owner: "Ana Júlia Barros" },
 
   // 1º ANO REDES
 
