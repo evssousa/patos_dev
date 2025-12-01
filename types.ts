@@ -1,4 +1,3 @@
-
 export enum DuckAction {
   IDLE = 'IDLE',
   WALK = 'WALK',
