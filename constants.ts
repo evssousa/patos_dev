@@ -62,7 +62,7 @@ export const STUDENT_DUCKS = [
   { duckName: "Bolota", owner: "Evellyn Cleyciane 3ºDS" },
   { duckName: "Pitomba", owner: "Isabelle Marinho 3ºDS" },
   { duckName: "Meliodas", owner: "Paulo Henrique 3ºDS" },
-  { duckName: "Patoncio", owner: "João Leandro Silva Sousa" },
+  { duckName: "Patoncio", owner: "João Leandro Silva Sousa 3ºDS" },
   { duckName: "Fofuchinho", owner: "Jimmy Ícaro 3ºDS" },
 
   // 1º ANO REDES
@@ -70,7 +70,7 @@ export const STUDENT_DUCKS = [
   { duckName: "Joelho", owner: "Thaynara Almeida Araújo 1ºRDC" },
 
   // 2º ANO REDES
-  { duckName: "Barruada", owner: "Paulo Sérgio Alves da Costa" },
+  { duckName: "Barruada", owner: "Paulo Sérgio Alves da Costa 2ºRDC" },
 
 ];
 
