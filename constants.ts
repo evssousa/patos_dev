@@ -21,6 +21,7 @@ export const STUDENT_DUCKS = [
   { duckName: "Cleitin", owner: "João Emanoel Alves da Silva 1ºDS" },
   { duckName: "Fodêncio", owner: "Caio Victor Barros Uchoa 1ºDS" },
   { duckName: "Judite", owner: "Lariany Duarte 1ºDS" },
+  { duckName: "Garry Kaspinrov", owner: "Eryck Fernando de Oliveira Barbosa 1ºDS" },
 
   // 2º ANO DS
   { duckName: "Desgraçado Jr.", owner: "José Enzo Marinho Ramos 2ºDS" },
@@ -45,17 +46,31 @@ export const STUDENT_DUCKS = [
   { duckName: "Conceição", owner: "Maria Lauriene Almeida Nascimento 2ºDS" },
   { duckName: "Jorginho J-hope", owner: "Beatriz Fernandes 2ºDS" },
   { duckName: "Zeca Doca", owner: "Gustavo Teixeira 2ºDS" },
-  { duckName: "Heldinho", owner: "João Guilherme Lins Almeida" },
-  { duckName: "Marío Claro", owner: "Vivian Maria Vaz" },
+  { duckName: "Heldinho", owner: "João Guilherme Lins Almeida 2ºDS" },
+  { duckName: "Marío Claro", owner: "Vivian Maria Vaz 2ºDS" },
 
   // 3º ANO DS
   { duckName: "Kyle Crane", owner: "Jovêncio 3ºDS" },
   { duckName: "Petrucio", owner: "Alan Dyeison 3ºDS" },
-  { duckName: "Sabuguinho", owner: "Ana Júlia Barros" },
+  { duckName: "Sabuguinho", owner: "Ana Júlia Barros 3ºDS" },
+  { duckName: "Gordofredo", owner: "Wesley 3ºDS" },
+  { duckName: "Gabrielô", owner: "Ana Luiza Bezerra Ribeiro 3ºDS" },
+  { duckName: "Zinha", owner: "Terezinha 3ºDS" },
+  { duckName: "Remus Lupin (Aluado)", owner: "Antonia Laís 3ºDS" },
+  { duckName: "Mani Delgado", owner: "Ana Larissa de Sousa Mendes 3ºDS" },
+  { duckName: "Quack Johnson", owner: "Paulo Eduardo Santos Farias 3ºDS" },
+  { duckName: "Bolota", owner: "Evellyn Cleyciane 3ºDS" },
+  { duckName: "Pitomba", owner: "Isabelle Marinho 3ºDS" },
+  { duckName: "Meliodas", owner: "Paulo Henrique 3ºDS" },
+  { duckName: "Patoncio", owner: "João Leandro Silva Sousa" },
+  { duckName: "Fofuchinho", owner: "Jimmy Ícaro 3ºDS" },
 
   // 1º ANO REDES
+  { duckName: "Leo If-Else", owner: "Levi Barbosa Matos 1ºRDC" },
+  { duckName: "Joelho", owner: "Thaynara Almeida Araújo 1ºRDC" },
 
   // 2º ANO REDES
+  { duckName: "Barruada", owner: "Paulo Sérgio Alves da Costa" },
 
 ];
 
